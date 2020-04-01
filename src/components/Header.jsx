@@ -14,8 +14,9 @@ const StyledBadge = withStyles(theme => ({
   }
 }))(Badge);
 
-export default function Header() {
+export default function Header({cart}) {
     const [isVisible, setVisibility] = React.useState(false);
+    
   return (
     <header>
       <div className="flex">
@@ -26,7 +27,7 @@ export default function Header() {
         <img src="./logo-TRS-light.png" alt="logo" />
         <div id="cart" className="black vcenter center flex">
           <IconButton aria-label="cart">
-            <StyledBadge badgeContent={4} color="secondary">
+            <StyledBadge badgeContent={cart.length} color="secondary">
               <ShoppingCartIcon color="secondary" />
             </StyledBadge>
           </IconButton>

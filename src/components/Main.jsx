@@ -49,7 +49,7 @@ const brands = tShirts
 const sizes = ["S", "M", "L", "XL", "XXL"]; //.filter((a,i,arr)=>arr.indexOf(a) === i)
 
 
-export default function Main() {
+export default function Main(props) {
   const classes = useStyles();
   const [prices, setPrices] = React.useState([minPrice,maxPrice]);
   const [brand, setBrand] = React.useState("");
@@ -57,6 +57,8 @@ export default function Main() {
   const [color, setColor] = React.useState("");
   const [sortBy, setSortBy] = React.useState("");
   const [arrFilter, setArrFilter] = React.useState(tShirts);
+  const [cart,setCart] = React.useState([])
+  
   function reset(){
     setBrand("")
     setSize("")
@@ -76,7 +78,7 @@ export default function Main() {
         )
         .sort((a, b) => sortBy ? !isNaN(a[sortBy]) ? a[sortBy] - b[sortBy] : a[sortBy] < b[sortBy] ? -1 : 1 :"")
     );
-   
+
     return () => {
       // cleanup
     };
@@ -207,7 +209,7 @@ export default function Main() {
         <div id="content">
           {arrFilter.length ? <div id="products" className="grid auto-grid">
             {arrFilter.map((tShirt, i) => (
-              <Product key={i} tShirt={tShirt} />
+              <Product key={i} tShirt={tShirt} clbkCart={props.clbkCart}/>
             ))}</div>
             : <div className="flex max-height v-center center"><h1>No more Tshirt</h1></div>
             }

@@ -44,10 +44,10 @@ const tShirts=[{
     img:['https://fgl.scene7.com/is/image/FGLSportsLtd/FGL_332776295_40_a?bgColor=0,0,0,0&fmt=png-alpha&hei=528&resMode=sharp&qlt=85,1&op_sharpen=1','https://fgl.scene7.com/is/image/FGLSportsLtd/FGL_332872058_34_a-Hurley-Mens-Premium-One-And-Only-Solid-T-Shirt-Jade-AH7935-350?wid=800&hei=800&bgColor=0,0,0,0&fmt=png-alpha&resMode=sharp2&op_sharpen=1','https://www.stadium.se/INTERSHOP/static/WFS/Stadium-SwedenB2C-Site/-/Stadium/sv_SE/Detail/282609_102_HURLEY_M%20PRM%20ONE%20%26%20ONLY%20SOLID%20SHORT%20SLEEVE%20TEE.png'],
 },
 {
-    brand:'Picture',
-    ref:'Earth Brick',
-    price:35.00,
-    img:['https://lh3.googleusercontent.com/proxy/FOaUEykfsV-uXn4DlmqR-sX3Ge_Q1rIia9gso35iB7hM2YBBMFhrM6d6-0vQKF3rzd96mM_y2gL4_p_46RO4GVsxIPQkmBRA3yqWB9t2zEQkUwYOALsPws87YM5Ee6rUuZd2ijTdbImHev9FyPAwA_VORQ'],
+    brand:'Nike SB',
+    ref:'Nike SB Logo',
+    price:13.79,
+    img:['https://www.picclickimg.com/00/s/NzAwWDcwMA==/z/tT0AAOSwm6xdmHIa/$_57.PNG?set_id=8800005007','https://cdn.shopify.com/s/files/1/0034/8500/7936/products/DynamicImageHandler_2e70df00-764f-42fc-a4c1-b10b02092d75.png'],
 },
 {
     brand:'Hurley',

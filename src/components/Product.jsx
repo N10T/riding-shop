@@ -1,4 +1,5 @@
 import React from "react";
+
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
 import Radio from "@material-ui/core/Radio";
@@ -15,27 +16,28 @@ const GreenRadio = withStyles({
   checked: {}
 })(props => <Radio color="default" {...props} />);
 
-// const useStyles = makeStyles(theme => ({
-//   addIcon: {
-//     fontSize: "large",
-//     position: "fixed"
-//   }
-// }));
+
 
 const twoDigits = number => Number.isInteger(number) ? number + '.00' : number
 
-export default function Product({tShirt}) {
-//   const [color, setColor] = React.useState("");
+export default function Product({tShirt,clbkCart}) {
+//   const [colors, setColors] = React.useState([]);
   const [selectedValue, setSelectedValue] = React.useState("a");
 
   const handleChange = event => {
     setSelectedValue(event.target.value);
   };
+    function cartFiller(element){
+        clbkCart(
+            [element]
+            )
+    }
   return (
     <div className="product-box flex column">
+
       <div className="flex space-between">
         <h1 className="product-title">{tShirt.brand}</h1>
-        <AddIcon fontSize="large" onClick={() => alert("added")} />
+        <AddIcon fontSize="large" onClick={() => cartFiller(tShirt)} />
       </div>
       <div className="flex space-between">
       <h2 className="product-reference color-secondary-1-0">{tShirt.ref}</h2>
@@ -65,6 +67,7 @@ export default function Product({tShirt}) {
       </div>
       <div className="product-image">
         <img
+        id='img'
           src={
             tShirt.img
               ? tShirt.img[0]
@@ -79,3 +82,4 @@ export default function Product({tShirt}) {
     </div>
   );
 }
+
