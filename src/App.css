@@ -70,6 +70,10 @@
   display: grid
 }
 
+.auto-grid{
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+}
+
 .bold{
   font-size: bold;
 }
@@ -78,10 +82,22 @@
   border: 1px solid var(--color-primary);
 }
 
-.product-box{
+
+/* .product-box{
   justify-content: space-between;
   width: 100%;
   padding: 15px 30px;
+  border: 1px solid var(--color-primary);
+  min-height: 300px;
+  z-index: 0
+} */
+
+.product-box{
+  display: grid;
+  grid-template-columns: auto 30%;
+  grid-template-rows: 3em 3em auto 15%;
+  width: 100%;
+  padding: 15px;
   border: 1px solid var(--color-primary);
   min-height: 300px;
   z-index: 0
@@ -103,17 +119,20 @@
 .product-colors{
 padding: 30px 30px 0 0;
 }
+.product-reference{
+  z-index: 50;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 .product-image{
-  height: 130px;
+  height: 300px;
+  grid-row-start: 3;
+  grid-row-end: 5;
 }
 .product-image>img{
-  height: 120%;
+  height: 85%;
   -webkit-animation: text-pop-out-tl 0.10s linear both;
   animation: text-pop-out-tl 0.10s linear both;
-}
-
-.auto-grid{
-  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 }
 
 #cart{
@@ -164,19 +183,24 @@ footer{
   background-color: var(--color-primary-1-background)
 }
 
-.product-box>div>.MuiSvgIcon-fontSizeLarge{
+#add-button{
   visibility: hidden;
 }
 
-.product-box:hover>div>.MuiSvgIcon-fontSizeLarge{
+.product-box:hover #add-button{
 visibility: visible;
-
 }
+
 /* ici------------------------------------------- */
-.product-box:hover>.product-image>img{
+.product-box:hover img{
 	-webkit-animation: text-pop-up-tl 0.25s linear both;
 	        animation: text-pop-up-tl 0.25s linear both;
+}
 
+.product-box img{
+  position: relative;
+  top:0;
+  left:0
 }
 
 #sidebar{
@@ -281,8 +305,8 @@ footer {
     text-shadow: none;
   }
   100% {
-    -webkit-transform: translateY(-0px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
-            transform: translateY(-0px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
+    -webkit-transform: translateY(30px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
+            transform: translateY(30px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
     -webkit-transform-origin: 50% 50%;
             transform-origin: 50% 50%;
     text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
@@ -291,10 +315,10 @@ footer {
 
 @keyframes text-pop-out-tl {
   0% {
-    -webkit-transform: translateY(-0px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
-            transform: translateY(-0px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
+    -webkit-transform: translateY(30px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
+            transform: translateY(30px) translateX(-20px)  scale(1.5) rotateZ(-7deg);
     -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
     text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
   }
   100% {

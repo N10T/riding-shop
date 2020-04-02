@@ -16,6 +16,7 @@ const StyledBadge = withStyles(theme => ({
 
 export default function Header({cart}) {
     const [isVisible, setVisibility] = React.useState(false);
+
     
   return (
     <header>

@@ -11,6 +11,7 @@ import Slider from "@material-ui/core/Slider";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
 import Product from "./Product";
+import Product2 from "./Product2";
 import tShirts from "../seed";
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -41,12 +42,12 @@ const valuetext = value => `${value}€`;
 const colors = tShirts
   .map(a => (a = a.color))
   .filter((a, i, arr) => (a ? arr.indexOf(a) === i : null))
-  .sort(); //.filter((a,i,arr)=>arr.indexOf(a) === i)
+  .sort();
 const brands = tShirts
   .map(a => (a = a.brand))
   .filter((a, i, arr) => (a ? arr.indexOf(a) === i : null))
-  .sort(); //.filter((a,i,arr)=>arr.indexOf(a) === i)
-const sizes = ["S", "M", "L", "XL", "XXL"]; //.filter((a,i,arr)=>arr.indexOf(a) === i)
+  .sort();
+const sizes = ["S", "M", "L", "XL"];
 
 
 export default function Main(props) {
@@ -57,7 +58,7 @@ export default function Main(props) {
   const [color, setColor] = React.useState("");
   const [sortBy, setSortBy] = React.useState("");
   const [arrFilter, setArrFilter] = React.useState(tShirts);
-  const [cart,setCart] = React.useState([])
+
   
   function reset(){
     setBrand("")
@@ -209,12 +210,12 @@ export default function Main(props) {
         <div id="content">
           {arrFilter.length ? <div id="products" className="grid auto-grid">
             {arrFilter.map((tShirt, i) => (
-              <Product key={i} tShirt={tShirt} clbkCart={props.clbkCart}/>
+              <Product2 key={i} tShirt={tShirt} clbkCart={props.clbkCart}/>
             ))}</div>
             : <div className="flex max-height v-center center"><h1>No more Tshirt</h1></div>
             }
-          
-          
+            <div id="products" className="grid auto-grid">
+          </div>
         </div>
       </div>
     </>

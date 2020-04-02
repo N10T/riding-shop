@@ -37,10 +37,9 @@ export default function Product({ tShirt, clbkCart }) {
   };
 
   return (
-    <div className="product-box flex column">
-      <div className="flex space-between">
+    <div className="product-box">
         <h1 className="product-title">{tShirt.brand}</h1>
-        <div className="color-secondary-1-0">
+        <div className="color-secondary-1-0 flex flex-end">
           <IconButton
             id="add-button"
             color="inherit"
@@ -50,29 +49,31 @@ export default function Product({ tShirt, clbkCart }) {
             <AddIcon fontSize="large" />
           </IconButton>
         </div>
-      </div>
-      <div className="flex space-between">
         <h2 className="product-reference color-secondary-1-0">{tShirt.ref}</h2>
-        <div className="product-size absolute">
-        <FormGroup column>
+        <div className="product-size flex flex-end">
+        <FormGroup >
       <FormControlLabel
         control={<Checkbox checked={state.checkedA} onChange={handleChange} name="checkedS" />}
         label="S"
+        labelPlacement="start"
       />
       <FormControlLabel
         control={<Checkbox checked={state.checkedB} onChange={handleChange} name="checkedM" />}
         label="M"
+        labelPlacement="start"
       />
       <FormControlLabel
         control={<Checkbox checked={state.checkedC} onChange={handleChange} name="checkedL" />}
         label="L"
+        labelPlacement="start"
       />
       <FormControlLabel
         control={<Checkbox checked={state.checkedD} onChange={handleChange} name="checkedXL" />}
         label="XL"
+        labelPlacement="start"
       />
       </FormGroup>
-        </div>
+
         {/* <div className="product-colors">
         <Radio
           checked={selectedValue === "a"}
