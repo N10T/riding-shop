@@ -3,12 +3,14 @@ const tShirts=[{
     ref:'FGVS',
     price:29.99,
     img:['https://cdn.shopify.com/s/files/1/0086/5334/0777/products/salty-smile-surf-vetements-vintage-white-good-vibes-t-shirt-homme-tee-shirts-11370351427689_1048x.png?v=1575932347'],
+    size:["M", "L", "XL"]
 },
 {
     brand:'Nike',
     ref:'NSW Swoosh TShirt BV7645',
     price:18.00,
     img:['https://www.yune.fr/8993-large_default/tee-bigswoosh-gris.jpg'],
+    size:["S", "M", "L"]
 },
 // {
 //     brand:'Jordan',
@@ -42,18 +44,21 @@ const tShirts=[{
     ref:'Premium One And Only Solid',
     price:20.00,
     img:['https://fgl.scene7.com/is/image/FGLSportsLtd/FGL_332776295_40_a?bgColor=0,0,0,0&fmt=png-alpha&hei=528&resMode=sharp&qlt=85,1&op_sharpen=1','https://fgl.scene7.com/is/image/FGLSportsLtd/FGL_332872058_34_a-Hurley-Mens-Premium-One-And-Only-Solid-T-Shirt-Jade-AH7935-350?wid=800&hei=800&bgColor=0,0,0,0&fmt=png-alpha&resMode=sharp2&op_sharpen=1','https://www.stadium.se/INTERSHOP/static/WFS/Stadium-SwedenB2C-Site/-/Stadium/sv_SE/Detail/282609_102_HURLEY_M%20PRM%20ONE%20%26%20ONLY%20SOLID%20SHORT%20SLEEVE%20TEE.png'],
+    size:["M", "L", "XL"],
 },
 {
     brand:'Nike SB',
     ref:'Nike SB Logo',
     price:13.79,
     img:['https://www.picclickimg.com/00/s/NzAwWDcwMA==/z/tT0AAOSwm6xdmHIa/$_57.PNG?set_id=8800005007','https://cdn.shopify.com/s/files/1/0034/8500/7936/products/DynamicImageHandler_2e70df00-764f-42fc-a4c1-b10b02092d75.png'],
+    size:["S", "XL"],
 },
 {
     brand:'Hurley',
     ref:'Camo Tshirt',
     price:55.00,
     img:['https://i.pinimg.com/originals/98/33/09/983309c6d2a0e314150c64138c6ee8ee.png'],
+    size:["S", "M", "L", "XL"],
 },
 // {
 //     brand:'Quicksilver',
@@ -72,12 +77,14 @@ const tShirts=[{
     ref:'Magazine Flame Logo',
     price:43.99,
     img:['https://allbluetees.com/wp-content/uploads/2017/12/image-375.png','https://allbluetees.com/wp-content/uploads/2017/12/image-376.png','https://allbluetees.com/wp-content/uploads/2017/12/image-375.png'],
+    size:["S", "L", "XL"],
 },
 {
     brand:'The North Face',
     ref:'Classic',
     price:29.99,
     img:['https://www.rei.com/media/fbe3df3c-289b-4c2c-b9f4-96ae36eff84a'],
+    size:["M", "L", "XL"],
 },
 ]
 
