@@ -1,53 +1,56 @@
 import React from "react";
-import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
+
+//Radio
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControl from "@material-ui/core/FormControl";
+
+//Alert
+import Alert from '@material-ui/lab/Alert';
 
 const twoDigits = number =>
   Number.isInteger(number) ? number + ".00" : number;
 
 export default function Product({ tShirt, clbkCart }) {
   //   const [colors, setColors] = React.useState([]);
-  const [state, setState] = React.useState({
-    checkedS: false,
-    checkedM: false,
-    checkedL: false,
-    checkedXL: false
-  });
+  const [size, setSize] = React.useState("");
+  const [isHidden, setIsHidden] = React.useState(true);
 
   const handleChange = event => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+    setSize(event.target.value);
   };
 
-  function sizeAvailable(size,key) {
+  function addElementToCart() {
+    let newProduct = { ...tShirt };
+    newProduct.size = size;
+    return [newProduct];
+  }
+
+  function sizeAlert(){
+    setIsHidden(false)
+    setTimeout(() => {
+      setIsHidden(true)
+    }, 2000);
+  }
+
+  function sizeAvailable(size, key) {
     return tShirt.size.includes(size) ? (
       <FormControlLabel
-      key={key}
-        control={
-          <Checkbox
-            checked={state[`checked${size}`]}
-            onChange={handleChange}
-            name={`checked${size}`}
-            color="primary"
-          />
-        }
+        key={key}
+        value={size}
+        control={<Radio color="primary"/>}
         label={size}
-        labelPlacement="start"
       />
     ) : (
       <FormControlLabel
-      key={key}
-        control={
-          <Checkbox
-            disabled
-            inputProps={{ "aria-label": "disabled checkbox" }}
-            color="secondary"
-          />
-        }
+        key={key}
+        value="disabled"
+        disabled
+        control={<Radio />}
         label={size}
-        labelPlacement="start"
       />
     );
   }
@@ -55,20 +58,35 @@ export default function Product({ tShirt, clbkCart }) {
     <div className="product-box">
       <h1 className="product-title">{tShirt.brand}</h1>
       <div className="color-secondary-1-0 flex flex-end">
+      
         <IconButton
           id="add-button"
           color="inherit"
-          onClick={() => clbkCart([tShirt])}
+          onClick={() => size ? clbkCart(addElementToCart()) : sizeAlert()}
           aria-label="add to shopping cart"
         >
           <AddIcon fontSize="large" />
         </IconButton>
       </div>
-      <h2 className="product-reference color-secondary-1-0">{tShirt.ref}</h2>
+      <div className="product-reference flex space-between">
+      <h2 className="color-secondary-1-0">{tShirt.ref}</h2>
+      <div className={isHidden ? 'is-hidden' : ''}>
+      <Alert id="alert-size" variant="outlined" severity="info">Add your size</Alert>
+      </div>
+
+      </div>
       <div className="product-size flex flex-end">
-        <FormGroup>
-        {["S", "M", "L", "XL"].map((size,i)=>sizeAvailable(size,i))}
-        </FormGroup>
+        <FormControl component="fieldset">
+          {/* <FormLabel component="legend" >Size</FormLabel> */}
+          <RadioGroup
+            aria-label="size"
+            name="size"
+            value={size}
+            onChange={handleChange}
+          >
+            {["S", "M", "L", "XL"].map((size, i) => sizeAvailable(size, i))}
+          </RadioGroup>
+        </FormControl>
 
         {/* <div className="product-colors">
         <Radio
@@ -105,6 +123,7 @@ export default function Product({ tShirt, clbkCart }) {
           alt="foo"
         />
       </div>
+      
       <div className="flex flex-end">
         <h1>{twoDigits(tShirt.price)}€</h1>
       </div>
