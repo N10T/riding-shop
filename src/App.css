@@ -56,6 +56,7 @@
 
 .black{
   background-color: var(--color-secondary);
+  z-index: 200;
 }
 
 .flex-end{
@@ -233,7 +234,7 @@ footer {
   height: 140px;
   margin: var(--header-height);
   background-color: var(--color-secondary);
-  z-index: 100;
+  z-index: 200;
 }
 
 .max-height{
@@ -328,4 +329,32 @@ footer {
             transform-origin: 50% 50%;
     text-shadow: none;
   }
+}
+
+#cart-display{
+  position: fixed;
+  z-index: 1000;
+  top:20%;
+  height: 100vh;
+  width: 80vw;
+  background-color: var(--color-primary-1-background)
+}
+#left-cart{
+  position: absolute;
+  top:0;
+  height: 100%;
+  width: 50%;
+  background-image: url('https://source.unsplash.com/900x900/?tshirt,vans');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 50;
+}
+#right-cart{
+  position: absolute;
+  top:0;
+  right: 0;
+  height: 100%;
+  width: 50vw;
+  background-color: green;
+  z-index: 50;
 }

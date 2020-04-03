@@ -2,22 +2,8 @@ import React from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
-// import { withStyles } from "@material-ui/core/styles";
-// import { green } from "@material-ui/core/colors";
-// import Radio from "@material-ui/core/Radio";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
-// import { makeStyles } from '@material-ui/core/styles';
-
-// const GreenRadio = withStyles({
-//   root: {
-//     color: green[400],
-//     "&$checked": {
-//       color: green[600]
-//     }
-//   },
-//   checked: {}
-// })(props => <Radio color="default" {...props} />);
 
 const twoDigits = number =>
   Number.isInteger(number) ? number + ".00" : number;

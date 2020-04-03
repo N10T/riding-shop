@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -48,8 +48,8 @@ for (let i = minPrice; i <= maxPrice; i += 10) markArr.push(i);
 const marks = markArr.map(a => (a = { value: a, label: `${a}€` }));
 
 const valuetext = value => `${value}€`;
-
-const brands = tShirts
+var brandDisplay
+var brands = tShirts
   .map(a => (a = a.brand))
   .filter((a, i, arr) => (a ? arr.indexOf(a) === i : null))
   .sort();
@@ -57,12 +57,12 @@ const sizes = ["S", "M", "L", "XL"];
 
 export default function Main(props) {
   const classes = useStyles();
-  const [prices, setPrices] = React.useState([minPrice, maxPrice]);
-  const [brand, setBrand] = React.useState("");
-  const [size, setSize] = React.useState(sizes);
-  const [sortBy, setSortBy] = React.useState("");
-  const [arrFilter, setArrFilter] = React.useState(tShirts);
-  const [state, setState] = React.useState({
+  const [prices, setPrices] = useState([minPrice, maxPrice]);
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState(sizes);
+  const [sortBy, setSortBy] = useState("");
+  const [arrFilter, setArrFilter] = useState(tShirts);
+  const [state, setState] = useState({
     s: false,
     m: false,
     l: false,
@@ -80,17 +80,22 @@ export default function Main(props) {
 
   function reset() {
     setBrand("");
-    setSize("");
+    setSize(sizes);
+    setState({
+      s: false,
+      m: false,
+      l: false,
+      xl: false
+    })
     setSortBy("");
     setPrices([minPrice, maxPrice]);
     setArrFilter(tShirts);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     setArrFilter(
       tShirts
         .filter(t => (brand ? t.brand === brand : true))
-        // .filter(t => (color ? t.color === color : true))
         .filter(
           t => t.price >= Math.min(...prices) && t.price <= Math.max(...prices)
         )
@@ -113,11 +118,19 @@ export default function Main(props) {
         )
     );
 
-    return () => {
-      // cleanup
-    };
-  }, [size, brand, sortBy, prices,state]);
-  // console.log(tShirts.sort((a,b)=> a.brand > b.brand))
+    brands = arrFilter
+    .map(a => (a = a.brand))
+    .filter((a, i, arr) => (a ? arr.indexOf(a) === i : null))
+    .sort();
+
+    brandDisplay = brands.map((brand, i) => (
+      <MenuItem key={i} value={brand}>
+        {brand}
+      </MenuItem>
+    ))
+
+
+  }, [size, brand, sortBy, prices, state]);
 
   return (
     <>
@@ -182,11 +195,7 @@ export default function Main(props) {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                {brands.map((brand, i) => (
-                  <MenuItem key={i} value={brand}>
-                    {brand}
-                  </MenuItem>
-                ))}
+                {brandDisplay}
               </Select>
             </FormControl>
             <FormLabel component="legend">Size</FormLabel>
